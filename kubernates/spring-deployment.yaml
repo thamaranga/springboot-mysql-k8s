@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: students-app
+  name: students-app-service
   labels:
     name: students-app
 spec:
@@ -18,7 +18,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: students-app
+  name: students-app-deployment
 spec:
   selector:
     matchLabels:
