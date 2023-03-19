@@ -36,4 +36,9 @@ public class StudentController {
         studentRepository.deleteById(id);
         return "Deleted Student Successfully::"+id;
     }
+
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
 }

@@ -1,8 +1,6 @@
 # springboot-mysql-k8s
-This is a sample spring boot rest api which is deployed  in a local kubernates cluster (minikube)
+This is a sample spring boot rest api which is deployed  in a local kubernates cluster (docker desktop kubernates cluster)
 
-Starting the minikube kubernates cluster
-minikuber start
 
 Inside the project, kubernates folder contains all the yaml files  related to creating configmaps,
 creating secrets, creating deployments and services.
@@ -19,15 +17,17 @@ kubectl apply -f mysql-user-secret.yaml
 
 Mysql deployment
 kubectl apply -f mysql-deployment.yaml
+using below command we can log into kubernates pod. (mysql-7845c47f6-b2z7b means pod id)
+kubectl exec -it mysql-7845c47f6-b2z7b  -- /bin/bash
 
 spring boot jar file need to build using maven. 
 mvn clean install -DskipTests -> Build the jar file skipping auto test run
 
 Create the docker image from above jar file
 docker image build -t hasitha1990/students-app:1.0 .
+Then using docker desktop ui , this image need to push into dockerhub
 
 Deploy spring boot application
 kubectl apply -f spring-deployment.yaml
 
-Run the application using the url returned by below command
-minikube service students-app --url
+
